@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Managed Linux VM request",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "iaap.tcs/v1alpha1"
+    },
+    "kind": {
+      "const": "ManagedLinuxVM"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "instanceId",
+        "name",
+        "ownerTeam",
+        "costCenter"
+      ],
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "pattern": "^vm-[a-z0-9]{8}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ownerTeam": {
+          "type": "string"
+        },
+        "costCenter": {
+          "type": "string"
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "productRelease",
+        "environment",
+        "size",
+        "networkProfile",
+        "accessGroup",
+        "expiryDate"
+      ],
+      "properties": {
+        "productRelease": {
+          "const": "managed-linux-vm-1.0"
+        },
+        "environment": {
+          "enum": [
+            "sandbox",
+            "dev",
+            "test",
+            "prod"
+          ]
+        },
+        "size": {
+          "enum": [
+            "S",
+            "M",
+            "L"
+          ]
+        },
+        "networkProfile": {
+          "type": "string"
+        },
+        "accessGroup": {
+          "type": "string"
+        },
+        "expiryDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}
