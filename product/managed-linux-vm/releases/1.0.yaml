@@ -1,0 +1,25 @@
+product: managed-linux-vm
+version: "1.0"
+status: active
+
+description: Standard managed Linux VM for development workloads
+
+allowed:
+  environments:
+    - sandbox
+    - dev
+
+  sizes:
+    - S
+
+  networkProfiles:
+    - private-app
+
+bindings:
+  terraformModuleVersion: "1.0.0"
+  imageVersion: "ubuntu-22.04-showcase-1"
+  complianceProfile: "baseline-0.1"
+  policyBundle: "policy-0.1"
+
+sizeMap:
+  S: Standard_B2s
